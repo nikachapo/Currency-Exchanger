@@ -2,6 +2,7 @@ package core.usecases;
 
 public interface UseCase<T> {
 
-    T invoke();
+    default T invokeAndReturn() {return null;}
+    default void invoke() {}
 
 }

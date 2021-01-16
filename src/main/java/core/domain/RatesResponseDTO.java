@@ -15,4 +15,12 @@ public class RatesResponseDTO {
     public String getBase() {
         return base;
     }
+
+    @Override
+    public String toString() {
+        return "RatesResponseDTO{" +
+                "base='" + base + '\'' +
+                ", rates=" + rates +
+                '}';
+    }
 }

@@ -4,7 +4,7 @@ import core.domain.RatesResponseDTO;
 
 public interface CurrenciesRepository {
 
-    RatesResponseDTO getCurrencies();
+    void getCurrencies();
     void saveCurrencies(RatesResponseDTO ratesResponseDTO);
     RatesResponseDTO getCachedCurrencies();
 }

@@ -1,7 +1,7 @@
 package core.network;
 
-import com.sun.istack.internal.NotNull;
 import core.domain.RatesResponseDTO;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -9,9 +9,8 @@ import retrofit2.http.GET;
 public interface CurrenciesRemoteService {
 
     @GET(EndPoints.LATEST)
-    RatesResponseDTO getCurrencies();
+    Call<RatesResponseDTO> getCurrencies();
 
-    @NotNull
     static CurrenciesRemoteService getService() {
         if (EndPoints.INSTANCE != null) return EndPoints.INSTANCE;
         else synchronized (CurrenciesRemoteService.class) {

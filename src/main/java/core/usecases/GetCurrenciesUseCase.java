@@ -12,7 +12,7 @@ public class GetCurrenciesUseCase implements UseCase<RatesResponseDTO> {
     }
 
     @Override
-    public RatesResponseDTO invoke() {
-        return currenciesRepository.getCurrencies();
+    public void invoke() {
+        currenciesRepository.getCurrencies();
     }
 }

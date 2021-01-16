@@ -1,10 +1,9 @@
 package core.data;
 
-import com.sun.istack.internal.Nullable;
 import core.domain.RatesResponseDTO;
+import core.network.NetworkCallbacks;
 
 public interface CurrenciesDataSource {
 
-    @Nullable
-    RatesResponseDTO getRatesDTO();
+    void getRatesDTO(NetworkCallbacks<RatesResponseDTO> networkCallbacks);
 }
