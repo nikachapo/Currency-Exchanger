@@ -4,68 +4,51 @@ import com.google.gson.annotations.SerializedName;
 
 public class RatesResponse {
 
-    @SerializedName("CAD")
+    public static final String EUR = "EUR";
+    public static final String CAD = "CAD";
+    public static final String HKD = "HKD";
+    public static final String ISK = "ISK";
+    public static final String PHP = "PHP";
+    public static final String DKK = "DKK";
+    public static final String HUF = "HUF";
+    public static final String CZK = "CZK";
+    public static final String AUD = "AUD";
+    public static final String INR = "INR";
+    public static final String RUB = "RUB";
+    public static final String JPY = "JPY";
+    public static final String CNY = "CNY";
+    public static final String USD = "USD";
+    public static final String GBP = "GBP";
+
+    @SerializedName(CAD)
     private double cad;
-    @SerializedName("HKD")
+    @SerializedName(HKD)
     private double hkd;
-    @SerializedName("ISK")
+    @SerializedName(ISK)
     private double isk;
-    @SerializedName("PHP")
+    @SerializedName(PHP)
     private double php;
-    @SerializedName("DKK")
+    @SerializedName(DKK)
     private double dkk;
-    @SerializedName("HUF")
+    @SerializedName(HUF)
     private double huf;
-    @SerializedName("CZK")
+    @SerializedName(CZK)
     private double czk;
-    @SerializedName("AUD")
+    @SerializedName(AUD)
     private double aud;
-    @SerializedName("RON")
-    private double ron;
-    @SerializedName("SEK")
-    private double sek;
-    @SerializedName("IDR")
-    private double idr;
-    @SerializedName("INR")
+    @SerializedName(INR)
     private double inr;
-    @SerializedName("BRL")
-    private double brl;
-    @SerializedName("RUB")
+    @SerializedName(RUB)
     private double rub;
-    @SerializedName("HRK")
-    private double hrk;
-    @SerializedName("JPY")
+    @SerializedName(JPY)
     private double jpy;
-    @SerializedName("THB")
-    private double thb;
-    @SerializedName("CHF")
-    private double chf;
-    @SerializedName("SGD")
-    private double sgd;
-    @SerializedName("PLN")
-    private double pln;
-    @SerializedName("BGN")
-    private double bgn;
-    @SerializedName("CNY")
+    @SerializedName(CNY)
     private double cny;
-    @SerializedName("NOK")
-    private double nok;
-    @SerializedName("NZD")
-    private double nzd;
-    @SerializedName("ZAR")
-    private double zar;
-    @SerializedName("USD")
+    @SerializedName(USD)
     private double usd;
-    @SerializedName("MXN")
-    private double mxn;
-    @SerializedName("ILS")
-    private double ils;
-    @SerializedName("GBP")
+    @SerializedName(GBP)
     private double gbp;
-    @SerializedName("KRW")
-    private double krw;
-    @SerializedName("MYR")
-    private double myr;
+
     public void setCad(double cad) {
         this.cad = cad;
     }
@@ -122,39 +105,11 @@ public class RatesResponse {
         return aud;
     }
 
-    public void setRon(double ron) {
-        this.ron = ron;
-    }
-    public double getRon() {
-        return ron;
-    }
-
-    public void setSek(double sek) {
-        this.sek = sek;
-    }
-    public double getSek() {
-        return sek;
-    }
-
-    public void setIdr(double idr) {
-        this.idr = idr;
-    }
-    public double getIdr() {
-        return idr;
-    }
-
     public void setInr(double inr) {
         this.inr = inr;
     }
     public double getInr() {
         return inr;
-    }
-
-    public void setBrl(double brl) {
-        this.brl = brl;
-    }
-    public double getBrl() {
-        return brl;
     }
 
     public void setRub(double rub) {
@@ -164,53 +119,11 @@ public class RatesResponse {
         return rub;
     }
 
-    public void setHrk(double hrk) {
-        this.hrk = hrk;
-    }
-    public double getHrk() {
-        return hrk;
-    }
-
     public void setJpy(double jpy) {
         this.jpy = jpy;
     }
     public double getJpy() {
         return jpy;
-    }
-
-    public void setThb(double thb) {
-        this.thb = thb;
-    }
-    public double getThb() {
-        return thb;
-    }
-
-    public void setChf(double chf) {
-        this.chf = chf;
-    }
-    public double getChf() {
-        return chf;
-    }
-
-    public void setSgd(double sgd) {
-        this.sgd = sgd;
-    }
-    public double getSgd() {
-        return sgd;
-    }
-
-    public void setPln(double pln) {
-        this.pln = pln;
-    }
-    public double getPln() {
-        return pln;
-    }
-
-    public void setBgn(double bgn) {
-        this.bgn = bgn;
-    }
-    public double getBgn() {
-        return bgn;
     }
 
     public void setCny(double cny) {
@@ -220,27 +133,6 @@ public class RatesResponse {
         return cny;
     }
 
-    public void setNok(double nok) {
-        this.nok = nok;
-    }
-    public double getNok() {
-        return nok;
-    }
-
-    public void setNzd(double nzd) {
-        this.nzd = nzd;
-    }
-    public double getNzd() {
-        return nzd;
-    }
-
-    public void setZar(double zar) {
-        this.zar = zar;
-    }
-    public double getZar() {
-        return zar;
-    }
-
     public void setUsd(double usd) {
         this.usd = usd;
     }
@@ -248,39 +140,11 @@ public class RatesResponse {
         return usd;
     }
 
-    public void setMxn(double mxn) {
-        this.mxn = mxn;
-    }
-    public double getMxn() {
-        return mxn;
-    }
-
-    public void setIls(double ils) {
-        this.ils = ils;
-    }
-    public double getIls() {
-        return ils;
-    }
-
     public void setGbp(double gbp) {
         this.gbp = gbp;
     }
     public double getGbp() {
         return gbp;
-    }
-
-    public void setKrw(double krw) {
-        this.krw = krw;
-    }
-    public double getKrw() {
-        return krw;
-    }
-
-    public void setMyr(double myr) {
-        this.myr = myr;
-    }
-    public double getMyr() {
-        return myr;
     }
 
     @Override
@@ -294,29 +158,12 @@ public class RatesResponse {
                 ", huf=" + huf +
                 ", czk=" + czk +
                 ", aud=" + aud +
-                ", ron=" + ron +
-                ", sek=" + sek +
-                ", idr=" + idr +
                 ", inr=" + inr +
-                ", brl=" + brl +
                 ", rub=" + rub +
-                ", hrk=" + hrk +
                 ", jpy=" + jpy +
-                ", thb=" + thb +
-                ", chf=" + chf +
-                ", sgd=" + sgd +
-                ", pln=" + pln +
-                ", bgn=" + bgn +
                 ", cny=" + cny +
-                ", nok=" + nok +
-                ", nzd=" + nzd +
-                ", zar=" + zar +
                 ", usd=" + usd +
-                ", mxn=" + mxn +
-                ", ils=" + ils +
                 ", gbp=" + gbp +
-                ", krw=" + krw +
-                ", myr=" + myr +
                 '}';
     }
 }

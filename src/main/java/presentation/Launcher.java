@@ -1,23 +1,30 @@
 package presentation;
 
+import core.data.CurrenciesDataSource;
 import core.data.CurrenciesRepositoryImpl;
 import core.domain.RatesResponseDTO;
+import core.local.CurrenciesDAO;
+import core.local.CurrenciesDaoImpl;
+import core.local.CurrenciesLocalDataSource;
 import core.network.CurrenciesRemoteDataSource;
 import core.network.CurrenciesRemoteService;
-import core.network.NetworkCallbacks;
+import core.network.FetchCallbacks;
 import core.usecases.ExchangeUseCase;
 import core.usecases.GetCurrenciesUseCase;
 import core.usecases.UseCase;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Launcher{
+public class Launcher {
 
-    public static void main(String[] args) {
+    private static CurrenciesRepositoryImpl currenciesRepository;
 
-        CurrenciesRemoteDataSource remoteDataSource = new CurrenciesRemoteDataSource(CurrenciesRemoteService.getService());
+    public static void main(String[] args) throws SQLException {
 
-        final NetworkCallbacks<RatesResponseDTO> networkCallbacks = new NetworkCallbacks<RatesResponseDTO>() {
+        CurrenciesDataSource remoteDataSource = new CurrenciesRemoteDataSource(CurrenciesRemoteService.getService());
+
+        final FetchCallbacks<RatesResponseDTO> fetchCallbacks = new FetchCallbacks<RatesResponseDTO>() {
             @Override
             public void onSuccess(RatesResponseDTO obj) {
                 handleResponse(obj);
@@ -25,16 +32,20 @@ public class Launcher{
 
             @Override
             public void onError(String msg) {
+                currenciesRepository.getCachedCurrencies();
                 System.out.println(msg);
             }
         };
 
-        CurrenciesRepositoryImpl currenciesRepository = new CurrenciesRepositoryImpl(remoteDataSource, networkCallbacks);
+        CurrenciesDAO currenciesDAO = new CurrenciesDaoImpl();
+
+        CurrenciesDataSource localDataSource = new CurrenciesLocalDataSource(currenciesDAO);
+
+        currenciesRepository = new CurrenciesRepositoryImpl(remoteDataSource, localDataSource, fetchCallbacks);
 
         UseCase<RatesResponseDTO> getCurrencies = new GetCurrenciesUseCase(currenciesRepository);
 
         getCurrencies.invoke();
-
 
     }
 

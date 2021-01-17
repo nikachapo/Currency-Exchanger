@@ -19,20 +19,20 @@ public class CurrenciesRemoteDataSource implements CurrenciesDataSource {
     }
 
     @Override
-    public void getRatesDTO(NetworkCallbacks<RatesResponseDTO> networkCallbacks) {
+    public void getRatesDTO(FetchCallbacks<RatesResponseDTO> fetchCallbacks) {
         currenciesRemoteService.getCurrencies().enqueue(new Callback<RatesResponseDTO>() {
             @Override
             public void onResponse(Call<RatesResponseDTO> call, Response<RatesResponseDTO> response) {
                 if (response.isSuccessful()) {
-                    networkCallbacks.onSuccess(response.body());
+                    fetchCallbacks.onSuccess(response.body());
                 } else {
-                    networkCallbacks.onError("Something goes wrong!!!");
+                    fetchCallbacks.onError("Something goes wrong!!!");
                 }
             }
 
             @Override
             public void onFailure(Call<RatesResponseDTO> call, Throwable t) {
-                networkCallbacks.onError(t.getMessage());
+                fetchCallbacks.onError(t.getMessage());
             }
         });
     }

@@ -1,6 +1,6 @@
 package core.network;
 
-public interface NetworkCallbacks<T> {
+public interface FetchCallbacks<T> {
 
     void onSuccess(T obj);
 

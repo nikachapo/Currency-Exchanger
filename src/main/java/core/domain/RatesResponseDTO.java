@@ -16,11 +16,19 @@ public class RatesResponseDTO {
         return base;
     }
 
+    public void setRates(RatesResponse rates) {
+        this.rates = rates;
+    }
+
     @Override
     public String toString() {
         return "RatesResponseDTO{" +
                 "base='" + base + '\'' +
                 ", rates=" + rates +
                 '}';
+    }
+
+    public void setBase(String base) {
+        this.base = base;
     }
 }

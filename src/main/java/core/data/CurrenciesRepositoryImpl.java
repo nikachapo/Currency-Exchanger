@@ -1,19 +1,22 @@
 package core.data;
 
 import core.domain.RatesResponseDTO;
-import core.network.CurrenciesRemoteDataSource;
-import core.network.NetworkCallbacks;
+import core.network.FetchCallbacks;
 
-public class CurrenciesRepositoryImpl implements CurrenciesRepository, NetworkCallbacks<RatesResponseDTO> {
+public class CurrenciesRepositoryImpl implements CurrenciesRepository, FetchCallbacks<RatesResponseDTO> {
 
-    private final CurrenciesRemoteDataSource remoteDataSource;
+    private final CurrenciesDataSource remoteDataSource;
 
-    private final NetworkCallbacks<RatesResponseDTO> networkCallbacks;
+    private final CurrenciesDataSource localDataSource;
 
-    public CurrenciesRepositoryImpl(CurrenciesRemoteDataSource remoteDataSource,
-                                    NetworkCallbacks<RatesResponseDTO> networkCallbacks) {
+    private final FetchCallbacks<RatesResponseDTO> fetchCallbacks;
+
+    public CurrenciesRepositoryImpl(CurrenciesDataSource remoteDataSource,
+                                    CurrenciesDataSource localDataSource,
+                                    FetchCallbacks<RatesResponseDTO> fetchCallbacks) {
         this.remoteDataSource = remoteDataSource;
-        this.networkCallbacks = networkCallbacks;
+        this.localDataSource = localDataSource;
+        this.fetchCallbacks = fetchCallbacks;
     }
 
     @Override
@@ -23,22 +26,22 @@ public class CurrenciesRepositoryImpl implements CurrenciesRepository, NetworkCa
 
     @Override
     public void saveCurrencies(RatesResponseDTO ratesResponseDTO) {
-
+        localDataSource.saveRates(ratesResponseDTO);
     }
 
     @Override
-    public RatesResponseDTO getCachedCurrencies() {
-        return null;
+    public void getCachedCurrencies() {
+        localDataSource.getRatesDTO(fetchCallbacks);
     }
 
     @Override
     public void onSuccess(RatesResponseDTO obj) {
         new Thread(() -> saveCurrencies(obj));
-        networkCallbacks.onSuccess(obj);
+        fetchCallbacks.onSuccess(obj);
     }
 
     @Override
     public void onError(String msg) {
-        networkCallbacks.onError(msg);
+        fetchCallbacks.onError(msg);
     }
 }

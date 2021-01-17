@@ -6,5 +6,5 @@ public interface CurrenciesRepository {
 
     void getCurrencies();
     void saveCurrencies(RatesResponseDTO ratesResponseDTO);
-    RatesResponseDTO getCachedCurrencies();
+    void getCachedCurrencies();
 }
