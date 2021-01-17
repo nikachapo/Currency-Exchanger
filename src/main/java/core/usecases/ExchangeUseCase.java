@@ -16,9 +16,9 @@ public class ExchangeUseCase implements UseCase<Double> {
     public Double invokeAndReturn() {
         double toBase;
         if (exchangeFromRate < 1) {
-            toBase = amount * exchangeFromRate;
-        } else {
             toBase = amount / exchangeFromRate;
+        } else {
+            toBase = amount * exchangeFromRate;
         }
 
         double result;

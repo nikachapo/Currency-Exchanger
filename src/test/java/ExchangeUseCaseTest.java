@@ -7,22 +7,22 @@ import org.junit.runners.JUnit4;
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
-class ExchangeUseCaseTest {
+public class ExchangeUseCaseTest {
 
     private ExchangeUseCase exchangeUseCase;
     private Double testCurrFromRate = 2.0;
     private Double testCurrToRate = 4.0;
     private Double testAmount = 100.0;
 
-
     @Before
-    void setUp() {
+    public void setUp() {
         exchangeUseCase = new ExchangeUseCase(testCurrFromRate, testCurrToRate, testAmount);
     }
 
     @Test
-    void testExchange() {
+    public void testExchange() {
         double result = exchangeUseCase.invokeAndReturn();
-        assertTrue(result == 800);
+        System.out.println(result);
+        assertTrue(result == 50.0);
     }
 }
