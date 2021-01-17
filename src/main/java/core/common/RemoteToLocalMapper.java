@@ -25,13 +25,14 @@ public class RemoteToLocalMapper implements Mapper<RatesResponse, List<CurrencyE
         currencyEntities.add(new CurrencyEntity(RatesResponse.CNY, obj.getCny()));
         currencyEntities.add(new CurrencyEntity(RatesResponse.USD, obj.getUsd()));
         currencyEntities.add(new CurrencyEntity(RatesResponse.GBP, obj.getGbp()));
+        currencyEntities.add(new CurrencyEntity(RatesResponse.EUR, obj.getEur()));
         return currencyEntities;
     }
 
     @Override
     public RatesResponse mapTo(List<CurrencyEntity> obj) {
         RatesResponse ratesResponse = new RatesResponse();
-        for (CurrencyEntity currency: obj) {
+        for (CurrencyEntity currency : obj) {
             switch (currency.getName()) {
                 case RatesResponse.CAD:
                     ratesResponse.setCad(currency.getRate());
@@ -74,6 +75,9 @@ public class RemoteToLocalMapper implements Mapper<RatesResponse, List<CurrencyE
                     break;
                 case RatesResponse.GBP:
                     ratesResponse.setGbp(currency.getRate());
+                    break;
+                case RatesResponse.EUR:
+                    ratesResponse.setEur(currency.getRate());
                     break;
             }
         }

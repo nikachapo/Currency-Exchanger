@@ -12,8 +12,8 @@ public class CurrenciesDaoImpl implements CurrenciesDAO{
 
     public CurrenciesDaoImpl(Connection connection) throws SQLException {
         this.connection = connection;
-//        Driver driver = new org.h2.Driver();
-//        DriverManager.registerDriver(driver);
+        Driver driver = new org.h2.Driver();
+        DriverManager.registerDriver(driver);
     }
 
     public CurrenciesDaoImpl() throws SQLException {

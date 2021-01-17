@@ -20,6 +20,8 @@ public class RatesResponse {
     public static final String USD = "USD";
     public static final String GBP = "GBP";
 
+    private double eur;
+
     @SerializedName(CAD)
     private double cad;
     @SerializedName(HKD)
@@ -165,5 +167,13 @@ public class RatesResponse {
                 ", usd=" + usd +
                 ", gbp=" + gbp +
                 '}';
+    }
+
+    public double getEur() {
+        return eur;
+    }
+
+    public void setEur(double eur) {
+        this.eur = eur;
     }
 }

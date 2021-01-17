@@ -14,13 +14,9 @@ public class CurrenciesRemoteDataSource implements CurrenciesDataSource {
         this.currenciesRemoteService = currenciesRemoteService;
     }
 
-    public CurrenciesRemoteService getCurrenciesRemoteService() {
-        return currenciesRemoteService;
-    }
-
     @Override
     public void getRatesDTO(FetchCallbacks<RatesResponseDTO> fetchCallbacks) {
-        currenciesRemoteService.getCurrencies().enqueue(new Callback<RatesResponseDTO>() {
+        currenciesRemoteService.getCurrencies().enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<RatesResponseDTO> call, Response<RatesResponseDTO> response) {
                 if (response.isSuccessful()) {

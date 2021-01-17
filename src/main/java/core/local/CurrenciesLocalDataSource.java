@@ -25,9 +25,9 @@ public class CurrenciesLocalDataSource implements CurrenciesDataSource {
             ratesResponseDTO.setRates(mapper.mapTo(currenciesDAO.getCurrencies()));
             ratesResponseDTO.setBase(RatesResponse.EUR);
             fetchCallbacks.onSuccess(ratesResponseDTO);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            fetchCallbacks.onError(throwables.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            fetchCallbacks.onError(e.getMessage());
         }
     }
 
@@ -35,8 +35,8 @@ public class CurrenciesLocalDataSource implements CurrenciesDataSource {
     public void saveRates(RatesResponseDTO ratesResponseDTO) {
         try {
             currenciesDAO.insertCurrencies(mapper.mapFrom(ratesResponseDTO.getRates()));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
